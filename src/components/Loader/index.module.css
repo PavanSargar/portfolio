@@ -1,0 +1,21 @@
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--color-primary);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.box {
+  width: 200px;
+  height: 200px;
+  background-color: var(--color-light);
+}
+
+.inactive {
+  display: none !important;
+}
