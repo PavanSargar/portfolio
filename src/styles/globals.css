@@ -73,6 +73,9 @@ body {
   .section-margin {
     margin: 2rem !important;
   }
+  .h-1 {
+    font-size: 32px;
+  }
 }
 
 @media screen and (max-width: 400px) {

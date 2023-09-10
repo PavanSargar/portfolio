@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { Row, Col } from "react-bootstrap";
 import Button from "@/components/Button";
+import { poppins } from "@/assets/fonts";
 import styles from "./index.module.css";
 
 type Props = {};
@@ -15,16 +16,21 @@ const Hero = (props: Props) => {
         <Col md={6} sm={12}>
           <div className=" d-flex align-items-center justify-content-center w-100">
             <div>
-              <h2 className="color-light h-1">
-                Hi, I am PAWAN A{" "}
+              <h2 className={`${poppins.className} color-light h-1`}>
+                Hi, I am Pawan! <br /> A{" "}
                 <span className="color-primary">Web Developer</span> based in
                 INDIA.
               </h2>
-              <p className={`${styles.description} color-dim`}>
+              <p
+                className={`${styles.description} ${poppins.className} mb-4 color-dim`}
+              >
                 As a web developer, I create user-centric digital products and
                 interactive experiences to help businesses achieve their goals.
               </p>
-              <Button size="md" className={` bg-color-primary`}>
+              <Button
+                size="lg"
+                className={` ${styles.button} bg-color-primary`}
+              >
                 Checkout my works!
               </Button>
             </div>

@@ -1,0 +1,44 @@
+.container {
+  min-height: 80vh;
+}
+
+.header {
+  margin-bottom: 4rem;
+}
+
+.header h6 {
+  width: 160px;
+}
+.hr {
+  height: 1px;
+  color: #fff;
+  width: 100%;
+  /* border-width: 1px; */
+}
+
+.form :is(input, textarea) {
+  outline: none;
+  border: none;
+  border-radius: 16px;
+  background: rgba(57, 62, 70, 0.5);
+  padding: 1rem;
+  color: #fff;
+}
+
+.button {
+  max-width: 200px;
+  border-radius: 16px;
+}
+
+
+.left img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+}
+
+@media screen and (max-width: 768px) {
+  .left {
+    display: none;
+  }
+}

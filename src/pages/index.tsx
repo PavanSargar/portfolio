@@ -1,26 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Head from "next/head";
 import { montserrat } from "@/assets/fonts";
 import Hero from "@/components/Home/Hero";
 import Projects from "@/components/Home/Projects";
-
-import styles from "@/styles/Home.module.css";
-import Loader from "@/components/Loader";
 import Testimonials from "@/components/Home/Testimonials";
-import { AnimatePresence } from "framer-motion";
+import Contact from "@/components/Home/Contact";
+import styles from "@/styles/Home.module.css";
+
 
 export default function Home() {
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      setLoading(false);
-    }, 3000);
-
-    return () => {
-      clearTimeout(timeoutId);
-    };
-  }, []);
   return (
     <>
       <Head>
@@ -29,16 +17,13 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {/* {loading ? (
-        <Loader />
-      ) : ( */}
-        <Loader />
+
       <main className={`${styles.main} ${montserrat.className}`}>
         <Hero />
         <Projects />
         <Testimonials />
+        <Contact />
       </main>
-      {/* // )} */}
     </>
   );
 }

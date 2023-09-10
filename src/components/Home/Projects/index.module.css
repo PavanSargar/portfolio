@@ -1,6 +1,8 @@
 .container {
   min-height: 90vh;
-  overflow-y: hidden !important;
+}
+.section {
+  margin-bottom: 10rem;
 }
 .header h6 {
   width: 160px;
