@@ -56,8 +56,8 @@ const ProjectCard = (props: ProjectCardInterface) => {
       exit={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       initial={{ opacity: 0 }}
+      transition={{ duration: 0.2, type: "tween", damping: 1, stiffness: 0 }}
       layout
-
     >
       <div className={`${styles["card-header"]}`}>
         <Image src={img} alt="" height={200} width={300} />
@@ -70,7 +70,13 @@ const ProjectCard = (props: ProjectCardInterface) => {
             initial="hidden"
             animate={showDescription ? "visible" : "hidden"}
             exit={descriptionExit}
-            transition={{ duration: 0.5, ease: "easeInOut" }}
+            transition={{
+              duration: 0.5,
+              ease: "easeInOut",
+              type: "just",
+              damping: 10,
+              stiffness: 10,
+            }}
           >
             <div className={`${styles["description-header"]}`}>
               {description}

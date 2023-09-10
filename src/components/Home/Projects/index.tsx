@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { firaCode } from "@/assets/fonts";
+import { firaCode, poppins } from "@/assets/fonts";
 import { AnimatePresence, motion } from "framer-motion";
 import Button from "@/components/Button";
 import ProjectCard from "@/components/ProjectCard";
@@ -38,36 +38,40 @@ const Projects = (props: Props) => {
 
   return (
     <div className={`${styles.container} section-margin`}>
-      <div
-        className={`${firaCode.className} ${styles.header} mb-3 d-flex align-items-center justify-content-between`}
-      >
-        <h3 className={` h-3 fw-medium color-light me-4`}>Projects</h3>
-        <div className={`bg-color-primary w-100 ${styles.hr}`}></div>
-        {/* <h6 className="color-light ms-4">View all ~~</h6> */}
-      </div>
-
-      <div className="d-flex align-items-center gap-3 mb-3 flex-wrap">
-        <Button
-          className={`${styles.button} ${active === "all" && styles.active} `}
+      <div className={styles.section}>
+        <div
+          className={`${poppins.className} ${styles.header} mb-3 d-flex align-items-center justify-content-between`}
         >
-          All
-        </Button>
-        {allSkills.map((item) => (
-          <Button
-            onClick={() => handleSkillActive(item)}
-            key={item + "1"}
-            className={`${styles.button} ${active === item && styles.active} `}
-          >
-            {item}
-          </Button>
-        ))}
-      </div>
+          <h3 className={` h-3 fw-medium color-light me-4`}>Projects</h3>
+          <div className={`bg-color-primary w-100 ${styles.hr}`}></div>
+          {/* <h6 className="color-light ms-4">View all ~~</h6> */}
+        </div>
 
-      <motion.div
-        layout
-        className={`${styles.projects} d-flex align-items-start justify-content-start gap-4`}
-      >
-        <AnimatePresence>
+        <div className="d-flex align-items-center gap-3 mb-5 flex-wrap">
+          <Button
+            onClick={() => handleSkillActive("all")}
+            className={`${styles.button} ${active === "all" && styles.active} `}
+          >
+            All
+          </Button>
+          {allSkills.map((item) => (
+            <Button
+              onClick={() => handleSkillActive(item)}
+              key={item + "1"}
+              className={`${styles.button} ${
+                active === item && styles.active
+              } `}
+            >
+              {item}
+            </Button>
+          ))}
+        </div>
+
+        <motion.div
+          // layout
+          className={`${styles.projects} d-flex align-items-start justify-content-start gap-4 flex-wrap`}
+        >
+          {/* <AnimatePresence> */}
           {filteredProjects?.map((item) => (
             <ProjectCard
               key={item?.id}
@@ -83,8 +87,9 @@ const Projects = (props: Props) => {
               technologies={item?.skills}
             />
           ))}
-        </AnimatePresence>
-      </motion.div>
+          {/* </AnimatePresence> */}
+        </motion.div>
+      </div>
     </div>
   );
 };
