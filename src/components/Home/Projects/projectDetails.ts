@@ -5,6 +5,7 @@ export const allSkills = [
   "Tailwind",
   "Bootstrap",
   "Three.JS",
+  "TypeScript"
 ];
 
 export const skillsTypes = {
@@ -14,6 +15,7 @@ export const skillsTypes = {
   tailwind: "Tailwind",
   bootstrap: "Bootstrap",
   threejs: "Three.JS",
+  typeScript: "TypeScript"
 };
 
 export const projectDetails = [
@@ -61,7 +63,7 @@ export const projectDetails = [
     name: "Waystoweb",
     shortDescription:
       "Waystoweb is a blog which I migrated from WordPress to NextJS. Not a regular writer, but used to write a while back.",
-    skills: ["Next", "(MD) Markdown", "On-page SEO", "Tailwind"],
+    skills: ["Next", "(MD) Markdown", "On-page SEO", "Tailwind", "TypeScript"],
     liveLink: "https://waystoweb.com",
     githubLink: "https://waystoweb.com",
     active: false,
