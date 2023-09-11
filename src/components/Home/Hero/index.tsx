@@ -14,7 +14,9 @@ const Hero = (props: Props) => {
     >
       <Row className={`${styles.row} d-flex align-items-center`}>
         <Col md={6} sm={12}>
-          <div className=" d-flex align-items-center justify-content-center w-100">
+          <div
+            className={`${styles.header} d-flex align-items-center justify-content-start w-100`}
+          >
             <div>
               <h2 className={`${poppins.className} color-light h-1`}>
                 Hi, I am Pawan! <br /> A{" "}
@@ -27,12 +29,14 @@ const Hero = (props: Props) => {
                 As a web developer, I create user-centric digital products and
                 interactive experiences to help businesses achieve their goals.
               </p>
-              <Button
-                size="lg"
-                className={` ${styles.button} bg-color-primary`}
-              >
-                Checkout my works!
-              </Button>
+              <div className={`${styles["button-container"]}`}>
+                <Button
+                  size="lg"
+                  className={` ${styles.button} bg-color-primary`}
+                >
+                  Checkout my works!
+                </Button>
+              </div>
             </div>
           </div>
         </Col>
