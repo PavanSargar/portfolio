@@ -86,7 +86,7 @@ const TestimonialCard = (props: TestimonialCardProps) => {
       </p>
       <h5>{name}</h5>
       <div className="d-flex justify-content-center">
-        <a className="text-center color-dim fs-6" href={url} target="__blank">
+        <a className="text-center color-dim " href={url} target="__blank">
           View Profile
         </a>
       </div>

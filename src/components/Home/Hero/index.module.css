@@ -9,6 +9,10 @@
   letter-spacing: -0.5px;
 }
 
+.img-container img {
+  border: 3px solid white;
+}
+
 @media screen and (max-width: 992px) {
   .container {
     height: auto;
@@ -37,7 +41,8 @@
 }
 
 @media screen and (max-width: 576px) {
-  .description, .button {
+  .description,
+  .button {
     font-size: 1rem;
     line-height: 1.4;
     letter-spacing: normal;
@@ -52,8 +57,23 @@
 }
 
 @media screen and (max-width: 400px) {
+  .container {
+    margin: 4rem 2rem 6rem !important;
+    height: 75dvh;
+  }
   .img-container img {
     height: 100%;
     width: 100%;
+    max-width: 225px;
+  }
+
+  .header :is(h2, p) {
+    text-align: center;
+    width: 100% !important;
+  }
+  .button-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
