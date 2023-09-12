@@ -13,6 +13,10 @@
   border: 3px solid white;
 }
 
+.button {
+  font-size: 18px;
+}
+
 @media screen and (max-width: 992px) {
   .container {
     height: auto;

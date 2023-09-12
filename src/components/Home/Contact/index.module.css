@@ -26,10 +26,10 @@
 }
 
 .button {
-  max-width: 200px;
-  border-radius: 16px;
+  max-width: 150px;
+  border-radius: 12px;
+  padding: 0.6rem;
 }
-
 
 .left img {
   width: 100%;

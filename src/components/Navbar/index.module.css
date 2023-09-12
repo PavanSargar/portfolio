@@ -1,0 +1,11 @@
+.button {
+  display: none;
+}
+@media screen and (max-width: 992px) {
+  .menu {
+    display: none !important;
+  }
+  .button {
+    display: block;
+  }
+}
