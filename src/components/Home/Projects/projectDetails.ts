@@ -5,7 +5,7 @@ export const allSkills = [
   "Tailwind",
   "Bootstrap",
   "Three.JS",
-  "TypeScript"
+  "TypeScript",
 ];
 
 export const skillsTypes = {
@@ -15,7 +15,7 @@ export const skillsTypes = {
   tailwind: "Tailwind",
   bootstrap: "Bootstrap",
   threejs: "Three.JS",
-  typeScript: "TypeScript"
+  typeScript: "TypeScript",
 };
 
 export const projectDetails = [
@@ -23,8 +23,7 @@ export const projectDetails = [
     id: 0,
     img: "https://ik.imagekit.io/waystoweb/Portfolio/Anaghasoftech.png?updatedAt=1694366055498",
     name: "AnaghaSoftech",
-    shortDescription:
-      "AnaghaSoftech",
+    shortDescription: "AnaghaSoftech (Client)",
     skills: [
       "React",
       "JavaScript",
@@ -42,8 +41,7 @@ export const projectDetails = [
     id: 1,
     img: "https://ik.imagekit.io/waystoweb/Portfolio/Kamalaeducation.png?updatedAt=1694366110641",
     name: "KamalaEducation",
-    shortDescription:
-      "Kamala Education",
+    shortDescription: "Kamala Education (Client)",
     skills: [
       "React",
       "JavaScript",
@@ -72,8 +70,7 @@ export const projectDetails = [
     id: 3,
     img: "https://ik.imagekit.io/waystoweb/Portfolio/revisela.png?updatedAt=1694366432619",
     name: "Revisela",
-    shortDescription:
-      "Revisela",
+    shortDescription: "Revisela (Client)",
     skills: ["React", "Redux", "CSS"],
     liveLink: "https://revisela.netlify.app/",
     githubLink: "https://revisela.netlify.app/",
@@ -83,8 +80,7 @@ export const projectDetails = [
     id: 4,
     img: "https://ik.imagekit.io/waystoweb/Portfolio/hhouse.png?updatedAt=1694366358212",
     name: "Haunted House",
-    shortDescription:
-      "Haunted House",
+    shortDescription: "Haunted House",
     skills: ["JavaScript", "Three.JS"],
     liveLink: "https://waystoweb.com",
     githubLink: "https://waystoweb.com",
@@ -94,8 +90,7 @@ export const projectDetails = [
     id: 5,
     img: "https://ik.imagekit.io/waystoweb/Portfolio/solve33.png?updatedAt=1694366150517",
     name: "Solve33",
-    shortDescription:
-      "Solve33",
+    shortDescription: "Solve33 (Client)",
     skills: ["React", "Styled Components"],
     liveLink: "https://waystoweb.com",
     githubLink: "https://waystoweb.com",

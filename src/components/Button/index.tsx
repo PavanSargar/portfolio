@@ -6,12 +6,21 @@ type Props = {
   variant?: "dark" | "light";
   className?: any;
   size?: "sm" | "lg" | "md" | any;
+  type?: "submit" | "reset" | "button";
   active?: boolean;
   onClick?: () => void;
 };
 
 const Button = (props: Props) => {
-  const { children, className, size, active, variant, onClick } = props;
+  const {
+    children,
+    className,
+    size,
+    active,
+    variant,
+    onClick,
+    type = "button",
+  } = props;
 
   return (
     <BButton
@@ -20,6 +29,7 @@ const Button = (props: Props) => {
       className={className}
       variant={variant}
       onClick={onClick}
+      type={type}
     >
       {children}
     </BButton>

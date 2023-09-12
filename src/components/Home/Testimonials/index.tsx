@@ -8,7 +8,7 @@ type Props = {};
 
 const Testimonials = (props: Props) => {
   return (
-    <div className={`${styles.container} section-margin`}>
+    <div id="testimonials" className={`${styles.container} section-margin`}>
       <div
         className={`${poppins.className} ${styles.header}  d-flex align-items-center justify-content-between`}
       >
@@ -52,7 +52,6 @@ const Testimonials = (props: Props) => {
           url={testimonials[4].url}
         />
       </div>
-
     </div>
   );
 };

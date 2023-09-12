@@ -1,18 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
+import emailjs from "emailjs-com";
 import Image from "next/image";
-import { Col, Row } from "react-bootstrap";
+import { Col, Row, Spinner } from "react-bootstrap";
 import { poppins } from "@/assets/fonts";
 
 import Button from "@/components/Button";
 import DUSTIMAGE from "@/assets/images/Dust.svg";
 
 import styles from "./index.module.css";
+import emailjsConfig from "./emailConfig";
 
 type Props = {};
 
 const Contact = (props: Props) => {
+  const [mailSent, setMailSent] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const handleSendEmail = (e: any) => {
+    e.preventDefault();
+    if (e.target.name.value && e.target.email.value && e.target.message.value) {
+      setLoading(true);
+      emailjs
+        .sendForm(
+          emailjsConfig.serviceID,
+          emailjsConfig.templateID,
+          e.target,
+          emailjsConfig.userID
+        )
+        .then((result) => {
+          console.log("Email sent successfully:", result.text);
+          setMailSent(true);
+          e.target.reset();
+          setLoading(false);
+        })
+        .catch((error) => {
+          console.error("Email failed to send:", error.text);
+          setError(true);
+        });
+    }
+  };
   return (
-    <div className={`${styles.container} section-margin`}>
+    <div id="contact" className={`${styles.container} section-margin`}>
       <div
         className={`${poppins.className} ${styles.header}  d-flex align-items-center justify-content-between`}
       >
@@ -27,7 +56,10 @@ const Contact = (props: Props) => {
           <Image src={DUSTIMAGE} alt="" />
         </Col>
         <Col md={6} sm={12} className={`${styles.right}`}>
-          <form className={`${styles.form} d-flex flex-column gap-4`}>
+          <form
+            onSubmit={handleSendEmail}
+            className={`${styles.form} d-flex flex-column gap-4`}
+          >
             <div className="d-flex align-items-center gap-4">
               <div>
                 <label className="color-dim ms-1 mb-2" htmlFor="name">
@@ -35,7 +67,7 @@ const Contact = (props: Props) => {
                 </label>
                 <input
                   id="name"
-                  name="name"
+                  name="from_name"
                   className="w-100"
                   placeholder="Enter Name"
                   type="text"
@@ -48,10 +80,11 @@ const Contact = (props: Props) => {
 
                 <input
                   id="email"
-                  name="email"
+                  name="user_email"
                   className="w-100"
                   placeholder="Enter Email"
                   type="email"
+                  onChange={(e) => {}}
                 />
               </div>
             </div>
@@ -68,10 +101,28 @@ const Contact = (props: Props) => {
                 rows={10}
               />
             </div>
-            <Button size="md" className={`${styles.button} bg-color-primary`}>
-              Submit
-            </Button>
+            {mailSent ? (
+              ""
+            ) : (
+              <Button
+                type="submit"
+                size="md"
+                className={`${styles.button} bg-color-primary`}
+              >
+                {loading ? <Spinner size="sm" /> : "Submit"}
+              </Button>
+            )}
           </form>
+          {mailSent && (
+            <p className="text-success mt-3 fw-md">
+              Pawan will get back to you shortly!
+            </p>
+          )}
+          {error && (
+            <p className="text-danger mt-3 fw-md">
+              Something went wrong!, please try again
+            </p>
+          )}
         </Col>
       </Row>
     </div>

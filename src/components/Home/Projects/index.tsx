@@ -37,7 +37,7 @@ const Projects = (props: Props) => {
   );
 
   return (
-    <div className={`${styles.container} section-margin`}>
+    <div id="projects" className={`${styles.container} section-margin`}>
       <div className={styles.section}>
         <div
           className={`${poppins.className} ${styles.header} mb-3 d-flex align-items-center justify-content-between`}
