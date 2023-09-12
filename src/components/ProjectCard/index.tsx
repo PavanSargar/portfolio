@@ -84,7 +84,7 @@ const ProjectCard = (props: ProjectCardInterface) => {
             <hr className="mb-3" />
             <div className=" d-flex align-items-center justify-content-between">
               <a
-                className="text-decoration-underline color-primary"
+                className="text-decoration-underline color-primary fw-bold"
                 target="_blank"
                 rel="external"
                 href={liveURL}
@@ -92,7 +92,7 @@ const ProjectCard = (props: ProjectCardInterface) => {
                 View Live
               </a>
               <a
-                className="text-decoration-underline color-primary"
+                className="text-decoration-underline color-primary fw-bold"
                 target="_blank"
                 rel="external"
                 href={githubURL}

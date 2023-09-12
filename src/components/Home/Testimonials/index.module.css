@@ -57,6 +57,11 @@
   /* background: url(<path-to-image>), lightgray 50% / cover no-repeat; */
 }
 
+@media screen and (max-width: 768px) {
+  .card {
+    margin-bottom: 2rem;
+  }
+}
 
 @media screen and (max-width: 420px) {
   .card p {
@@ -69,3 +74,4 @@
     font-size: 14px;
   }
 }
+

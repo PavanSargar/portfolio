@@ -50,13 +50,6 @@
 }
 
 @media screen and (max-width: 450px) {
-  .img-container img {
-    height: 300px;
-    width: 300px;
-  }
-}
-
-@media screen and (max-width: 420px) {
   .container {
     margin: 4rem 2rem 6rem !important;
     height: 75dvh;
@@ -76,4 +69,7 @@
     align-items: center;
     justify-content: center;
   }
+}
+
+@media screen and (max-width: 400px) {
 }
