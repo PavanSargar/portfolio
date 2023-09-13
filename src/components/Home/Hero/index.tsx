@@ -28,7 +28,7 @@ const Hero = (props: Props) => {
             <div>
               <h2 className={`${poppins.className} color-light h-1`}>
                 Hi, I am Pawan! <br /> A{" "}
-                <span className="color-primary">Web Developer</span> based in
+                <span className="color-primary">Front-end Developer</span> based in
                 INDIA.
               </h2>
               <p
