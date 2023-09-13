@@ -3,6 +3,7 @@ import { poppins } from "@/assets/fonts";
 import Image from "next/image";
 import styles from "./index.module.css";
 import { testimonials } from "./testimonialDetails";
+import Button from "@/components/Button";
 
 type Props = {};
 
@@ -43,7 +44,7 @@ const Testimonials = (props: Props) => {
             />
           ))}
       </div>
-      <div className="d-flex align-items-start justify-content-center mt-5">
+      <div className="d-flex align-items-start justify-content-center mb-5 mt-5">
         <TestimonialCard
           key={testimonials[4].name}
           name={testimonials[4].name}
@@ -51,6 +52,14 @@ const Testimonials = (props: Props) => {
           description={testimonials[4].description}
           url={testimonials[4].url}
         />
+      </div>
+
+      <div className="d-flex align-items-center justify-content-center">
+        <a target="_blank" href="https://www.fiverr.com/pavansargar">
+          <Button className="fs-6" size="md" variant="dark">
+            Checkout more reviews
+          </Button>
+        </a>
       </div>
     </div>
   );

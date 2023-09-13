@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Badge } from "react-bootstrap";
+import { FaLink } from "react-icons/fa6";
 
 import styles from "./index.module.css";
 
@@ -84,20 +85,20 @@ const ProjectCard = (props: ProjectCardInterface) => {
             <hr className="mb-3" />
             <div className=" d-flex align-items-center justify-content-between">
               <a
-                className="text-decoration-underline color-primary fw-bold"
+                className={`${styles.link} color-primary fw-bold`}
                 target="_blank"
                 rel="external"
                 href={liveURL}
               >
-                View Live
+                Live <FaLink />
               </a>
               <a
-                className="text-decoration-underline color-primary fw-bold"
+                className={`${styles.link} color-primary fw-bold`}
                 target="_blank"
                 rel="external"
                 href={githubURL}
               >
-                Github
+                Github <FaLink />
               </a>
             </div>
             <hr className="mt-3" />
