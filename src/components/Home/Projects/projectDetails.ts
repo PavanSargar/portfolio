@@ -82,8 +82,8 @@ export const projectDetails = [
     name: "Haunted House",
     shortDescription: "Haunted House",
     skills: ["JavaScript", "Three.JS"],
-    liveLink: "https://waystoweb.com",
-    githubLink: "https://waystoweb.com",
+    liveLink: "https://hhouse.netlify.app/",
+    githubLink: "https://hhouse.netlify.app/",
     active: false,
   },
   {
@@ -92,8 +92,8 @@ export const projectDetails = [
     name: "Solve33",
     shortDescription: "Solve33 (Client)",
     skills: ["React", "Styled Components"],
-    liveLink: "https://waystoweb.com",
-    githubLink: "https://waystoweb.com",
+    liveLink: "https://solve33.netlify.app/",
+    githubLink: "https://solve33.netlify.app/",
     active: false,
   },
 ];
