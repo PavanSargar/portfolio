@@ -1,3 +1,12 @@
+type skills =
+  | "React"
+  | "Next"
+  | "Node.Js"
+  | "Tailwind"
+  | "Bootstrap"
+  | "Three.JS"
+  | "TypeScript"
+  | "Chakra UI";
 export const allSkills = [
   "React",
   "Next",
@@ -6,7 +15,7 @@ export const allSkills = [
   "Bootstrap",
   "Three.JS",
   "TypeScript",
-];
+] as skills[];
 
 export const skillsTypes = {
   react: "React",
@@ -19,6 +28,26 @@ export const skillsTypes = {
 };
 
 export const projectDetails = [
+  {
+    id: 6,
+    img: "https://ik.imagekit.io/waystoweb/Portfolio/Screenshot%20from%202023-10-12%2000-48-34.png?updatedAt=1697052113350",
+    name: "Profili.me | Create Your Digital Identity.",
+    shortDescription:
+      "Profili is more than links! Craft a personalized page that's unique to you. Showcase, share, and shine online.",
+    skills: [
+      "React",
+      "Chakra UI",
+      "TypeScript",
+      "Node.Js",
+      "Express",
+      "MongoDB",
+      "OAuth",
+      "Zustand",
+    ] as skills[],
+    liveLink: "https://profili.me",
+    githubLink: "https://github.com/LinksStation",
+    active: false,
+  },
   {
     id: 0,
     img: "https://ik.imagekit.io/waystoweb/Portfolio/Anaghasoftech.png?updatedAt=1694366055498",
