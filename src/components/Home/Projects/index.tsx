@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { firaCode, poppins } from "@/assets/fonts";
-import { AnimatePresence, motion } from "framer-motion";
+import { poppins } from "@/assets/fonts";
+import { motion } from "framer-motion";
 import Button from "@/components/Button";
 import ProjectCard from "@/components/ProjectCard";
 
