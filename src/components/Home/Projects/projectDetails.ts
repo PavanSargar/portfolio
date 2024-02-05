@@ -100,9 +100,9 @@ export const projectDetails = [
     img: "https://ik.imagekit.io/waystoweb/Portfolio/revisela.png?updatedAt=1694366432619",
     name: "Revisela",
     shortDescription: "Revisela (Client)",
-    skills: ["React", "Redux", "CSS"],
-    liveLink: "https://revisela.netlify.app/",
-    githubLink: "https://revisela.netlify.app/",
+    skills: ["Next", "Redux", "CSS", "Bootstrap", "TypeScript"],
+    liveLink: "https://revisela.com/",
+    githubLink: "https://revisela.com/",
     active: false,
   },
   {
