@@ -62,8 +62,8 @@ export const projectDetails = [
       "Express",
       "MongoDB",
     ],
-    liveLink: "http://anaghasoftech.com",
-    githubLink: "http://anaghasoftech.com",
+    liveLink: "http://anaghasoftech.netlify.com",
+    githubLink: "http://anaghasoftech.netlify.com",
     active: false,
   },
   {

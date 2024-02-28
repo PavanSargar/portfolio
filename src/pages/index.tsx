@@ -16,7 +16,7 @@ export default function Home() {
         <title>Pawan Sargar</title>
         <meta
           name="description"
-          content="Pawan Sargar Full Stack Developer | Software Engineer Portfolio"
+          content="Pawan Sargar Full Stack Developer and Freelancer| Software Engineer Portfolio"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />

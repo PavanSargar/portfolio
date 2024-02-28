@@ -1,8 +1,8 @@
 import React from "react";
+import { motion } from "framer-motion";
 import { Navbar as BNavbar, Nav, Container } from "react-bootstrap";
 import { poppins } from "@/assets/fonts";
 import Button from "../Button";
-import Loader from "../Loader";
 
 import styles from "./index.module.css";
 
@@ -21,7 +21,14 @@ const Navbar = (props: NavbarProps) => {
         className={`${poppins.className} ${styles.wrapper} w-100 d-flex align-items-center`}
       >
         <BNavbar.Brand className="fw-bold fs-2" href="#">
-          Pawan Sargar
+          <motion.h1
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ type: "spring", stiffness: 400 }}
+            className="fw-bold fs-2"
+          >
+            Pawan Sargar
+          </motion.h1>
         </BNavbar.Brand>
 
         <div className={`${styles.menu}`}>
@@ -33,15 +40,21 @@ const Navbar = (props: NavbarProps) => {
               <Nav.Link href="#About">About</Nav.Link>
               <Nav.Link href="#contact">Contact</Nav.Link>
               <a target="_blank" href="https://www.fiverr.com/pavansargar">
-                <Button className="bg-color-primary" variant="dark">
+                <motion.button
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  whileHover={{ scale: 1.2 }}
+                  transition={{ type: "spring", stiffness: 400 }}
+                  className="btn btn-dark bg-color-primary"
+                >
                   Hire Me
-                </Button>
+                </motion.button>
               </a>
             </Nav>
           </BNavbar.Collapse>
         </div>
 
-        <a
+        <motion.a
           className={`${styles.button}`}
           target="_blank"
           href="https://www.fiverr.com/pavansargar"
@@ -49,7 +62,7 @@ const Navbar = (props: NavbarProps) => {
           <Button className="bg-color-primary" variant="dark">
             Hire Me
           </Button>
-        </a>
+        </motion.a>
       </Container>
     </BNavbar>
   );
