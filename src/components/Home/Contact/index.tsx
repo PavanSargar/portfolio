@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import emailjs from "emailjs-com";
 import Image from "next/image";
 import { Col, Row, Spinner } from "react-bootstrap";
+import { stagger, useAnimate } from "framer-motion";
 import { poppins } from "@/assets/fonts";
 
 import Button from "@/components/Button";
@@ -16,6 +17,7 @@ const Contact = (props: Props) => {
   const [mailSent, setMailSent] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
+  const [scope, animate] = useAnimate();
 
   const handleSendEmail = (e: any) => {
     e.preventDefault();
@@ -38,6 +40,13 @@ const Contact = (props: Props) => {
           console.error("Email failed to send:", error.text);
           setError(true);
         });
+    } else {
+      animate(
+        "input, textarea, button",
+        { x: [-10, 0, 10, 0, -10, 0, 10, 0] },
+        { type: "spring", duration: 0.2, delay: stagger(0.05) }
+      );
+      return;
     }
   };
   return (
@@ -58,6 +67,7 @@ const Contact = (props: Props) => {
         <Col md={6} sm={12} className={`${styles.right}`}>
           <form
             onSubmit={handleSendEmail}
+            ref={scope}
             className={`${styles.form} d-flex flex-column gap-4`}
           >
             <div className="d-flex align-items-center gap-4">

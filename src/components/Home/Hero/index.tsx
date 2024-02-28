@@ -1,15 +1,12 @@
 import React from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { Row, Col } from "react-bootstrap";
-import {
-  FaGithub,
-  FaLinkedin,
-  FaLinkedinIn,
-  FaXTwitter,
-} from "react-icons/fa6";
-import Button from "@/components/Button";
+import { FaGithub, FaLinkedinIn, FaXTwitter } from "react-icons/fa6";
 import { poppins } from "@/assets/fonts";
 import styles from "./index.module.css";
+
+import ProfileImg from "@/assets/images/professional.jpeg";
 
 type Props = {};
 
@@ -28,8 +25,8 @@ const Hero = (props: Props) => {
             <div>
               <h2 className={`${poppins.className} color-light h-1`}>
                 Hi, I am Pawan! <br /> A{" "}
-                <span className="color-primary">Front-end Developer</span> based in
-                INDIA.
+                <span className="color-primary">Front-end Developer</span> based
+                in INDIA.
               </h2>
               <p
                 className={`${styles.description} ${poppins.className} mb-4 color-dim`}
@@ -63,7 +60,10 @@ const Hero = (props: Props) => {
           </div>
         </Col>
         <Col xl={6} lg={6} md={6} sm={12}>
-          <div
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ type: "spring", duration: 0.2, stiffness: 400 }}
             className={`${styles["img-container"]} w-100 d-flex align-items-center justify-content-center`}
           >
             <Image
@@ -71,10 +71,10 @@ const Hero = (props: Props) => {
               width={400}
               height={400}
               className="rounded-circle"
-              src="https://media.licdn.com/dms/image/D4D03AQGyLiK_H-KdPA/profile-displayphoto-shrink_800_800/0/1673636094627?e=1699488000&v=beta&t=AjeNgiJfof7vpWYsdxKuL8t_gU9enaL_pxUL1p3BgOU"
+              src={ProfileImg}
               alt="Pawan Sargar | Pavan Sargar"
             />
-          </div>
+          </motion.div>
         </Col>
       </Row>
     </div>
