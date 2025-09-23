@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { motion } from "framer-motion";
 import { Navbar as BNavbar, Nav, Container } from "react-bootstrap";
@@ -20,7 +21,7 @@ const Navbar = (props: NavbarProps) => {
         fluid
         className={`${poppins.className} ${styles.wrapper} w-100 d-flex align-items-center`}
       >
-        <BNavbar.Brand className="fw-bold fs-2" href="#">
+        <BNavbar.Brand className="fw-bold fs-2" href="/">
           <motion.h1
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
@@ -36,9 +37,10 @@ const Navbar = (props: NavbarProps) => {
           <BNavbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto"></Nav>
             <Nav className="d-flex gap-4">
-              <Nav.Link href="#projects">Projects</Nav.Link>
-              <Nav.Link href="#About">About</Nav.Link>
-              <Nav.Link href="#contact">Contact</Nav.Link>
+              <Nav.Link href="/#projects">Projects</Nav.Link>
+              <Nav.Link href="/#About">About</Nav.Link>
+              <Nav.Link href="/blog">Blog</Nav.Link>
+              <Nav.Link href="/#contact">Contact</Nav.Link>
               <a target="_blank" href="https://www.fiverr.com/pavansargar">
                 <motion.button
                   initial={{ opacity: 0, x: -20 }}

@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 import { poppins } from "@/assets/fonts";
 import { motion } from "framer-motion";

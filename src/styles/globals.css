@@ -109,3 +109,82 @@ a {
   all: unset;
   cursor: pointer;
 }
+
+/* Code highlighting overrides */
+.hljs {
+  background: #1e1e1e !important;
+  color: #d4d4d4 !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+}
+
+/* Ensure code blocks maintain proper styling */
+pre code {
+  background: #1e1e1e !important;
+  color: #d4d4d4 !important;
+  padding: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  font-size: inherit !important;
+  white-space: pre !important;
+  tab-size: 2 !important;
+}
+
+/* Override Bootstrap's code styling in blog posts */
+.blog-content code {
+  background: #1e1e1e !important;
+  color: #d4d4d4 !important;
+  border: none !important;
+  padding: 0 !important;
+  white-space: pre !important;
+  tab-size: 2 !important;
+}
+
+.blog-content pre {
+  background: #1e1e1e !important;
+  color: #d4d4d4 !important;
+  border: none !important;
+  border-radius: 8px !important;
+  padding: 1rem !important;
+  margin: 0 !important;
+  overflow-x: auto !important;
+  white-space: pre !important;
+  tab-size: 2 !important;
+}
+
+/* Additional syntax highlighting colors */
+.hljs-keyword {
+  color: #569cd6 !important;
+}
+
+.hljs-string {
+  color: #ce9178 !important;
+}
+
+.hljs-comment {
+  color: #6a9955 !important;
+}
+
+.hljs-number {
+  color: #b5cea8 !important;
+}
+
+.hljs-function {
+  color: #dcdcaa !important;
+}
+
+.hljs-variable {
+  color: #9cdcfe !important;
+}
+
+.hljs-tag {
+  color: #569cd6 !important;
+}
+
+.hljs-attr {
+  color: #92c5f7 !important;
+}
+
+.hljs-title {
+  color: #dcdcaa !important;
+}
