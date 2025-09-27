@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { poppins } from "@/assets/fonts";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Button from "@/components/Button";
 import ProjectCard from "@/components/ProjectCard";
 
@@ -12,28 +12,13 @@ import { allSkills, projectDetails } from "./projectDetails";
 type Props = {};
 
 const Projects = (props: Props) => {
-  const [projects, setProjects] = useState<any[]>(projectDetails);
   const [active, setActive] = useState("all");
-
-  const handleShowDescription = (data: boolean, id: any) => {
-    setProjects((prevProjects) =>
-      prevProjects.map((item) => {
-        if (item?.id === id) {
-          return {
-            ...item,
-            active: data,
-          };
-        }
-        return item;
-      })
-    );
-  };
 
   const handleSkillActive = (key: string) => {
     setActive(key);
   };
 
-  const filteredProjects = projects.filter((item) =>
+  const filteredProjects = projectDetails.filter((item) =>
     active === "all" ? item : item.skills.includes(active)
   );
 
@@ -69,26 +54,33 @@ const Projects = (props: Props) => {
         </div>
 
         <motion.div
-          // layout
+          layout
           className={`${styles.projects} d-flex align-items-start justify-content-start gap-4 flex-wrap`}
         >
-          {/* <AnimatePresence> */}
-          {filteredProjects?.map((item) => (
-            <ProjectCard
-              key={item?.id}
-              id={item?.id}
-              showDescription={item?.active}
-              onShowDescription={(data, id) =>
-                handleShowDescription(data, item?.id)
-              }
-              description={item?.shortDescription}
-              githubURL={item?.githubLink}
-              liveURL={item?.liveLink}
-              img={item?.img}
-              technologies={item?.skills}
-            />
-          ))}
-          {/* </AnimatePresence> */}
+          <AnimatePresence mode="wait">
+            {filteredProjects?.map((item, index) => (
+              <motion.div
+                key={item?.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ 
+                  duration: 0.3, 
+                  delay: index * 0.1,
+                  ease: "easeOut" 
+                }}
+              >
+                <ProjectCard
+                  id={item?.id}
+                  description={item?.shortDescription}
+                  githubURL={item?.githubLink}
+                  liveURL={item?.liveLink}
+                  img={item?.img}
+                  technologies={item?.skills}
+                />
+              </motion.div>
+            ))}
+          </AnimatePresence>
         </motion.div>
       </div>
     </div>

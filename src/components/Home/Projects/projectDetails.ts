@@ -7,6 +7,7 @@ type skills =
   | "Three.JS"
   | "TypeScript"
   | "Chakra UI";
+  
 export const allSkills = [
   "React",
   "Next",

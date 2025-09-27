@@ -37,9 +37,9 @@ const Navbar = (props: NavbarProps) => {
           <BNavbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto"></Nav>
             <Nav className="d-flex gap-4">
+              <Nav.Link href="/blog">Blog</Nav.Link>
               <Nav.Link href="/#projects">Projects</Nav.Link>
               <Nav.Link href="/#About">About</Nav.Link>
-              <Nav.Link href="/blog">Blog</Nav.Link>
               <Nav.Link href="/#contact">Contact</Nav.Link>
               <a target="_blank" href="https://www.fiverr.com/pavansargar">
                 <motion.button

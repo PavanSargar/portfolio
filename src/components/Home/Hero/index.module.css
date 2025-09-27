@@ -1,5 +1,6 @@
 .container {
   height: 80vh;
+  overflow: hidden;
 }
 
 .description {
@@ -7,15 +8,48 @@
   font-style: normal;
   line-height: 36px; /* 150% */
   letter-spacing: -0.5px;
+  will-change: transform, opacity;
+}
+
+.image-wrapper {
+  position: relative;
+  cursor: pointer;
+  will-change: transform;
 }
 
 .img-container img {
   border: 3px solid white;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.3s ease;
+}
+
+.image-wrapper:hover img {
+  box-shadow: 0 15px 40px rgba(190, 69, 224, 0.2);
 }
 
 .button {
   font-size: 18px;
 }
+
+.button-container a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  will-change: transform;
+}
+
+.button-container a:hover {
+  background: rgba(190, 69, 224, 0.1);
+  backdrop-filter: blur(4px);
+}
+
+.header h2 {
+  will-change: transform, opacity;
+}
+
 
 @media screen and (max-width: 992px) {
   .container {

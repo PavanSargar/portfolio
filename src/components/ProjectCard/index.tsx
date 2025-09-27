@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Badge } from "react-bootstrap";
@@ -8,8 +8,6 @@ import { FaLink } from "react-icons/fa6";
 import styles from "./index.module.css";
 
 interface ProjectCardInterface {
-  onShowDescription?: (value: boolean, id: any) => void;
-  showDescription?: boolean;
   technologies: string[];
   description: string;
   img: string;
@@ -30,8 +28,6 @@ const dummySkills = [
 
 const ProjectCard = (props: ProjectCardInterface) => {
   const {
-    onShowDescription,
-    showDescription,
     technologies = dummySkills,
     githubURL,
     liveURL,
@@ -39,65 +35,91 @@ const ProjectCard = (props: ProjectCardInterface) => {
     description,
     id,
   } = props;
-  const descriptionVariants = {
-    hidden: { opacity: 0, y: -100 },
-    visible: { opacity: 1, y: 0 },
+  
+  const [isHovered, setIsHovered] = useState(false);
+
+  const cardVariants = {
+    rest: { 
+      scale: 1,
+      transition: { duration: 0.2, ease: "easeOut" }
+    },
+    hover: { 
+      scale: 1.02,
+      transition: { duration: 0.2, ease: "easeOut" }
+    }
   };
-  const descriptionExit = {
-    y: -100,
-    opacity: 0,
+
+  const descriptionVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 20,
+      scale: 0.95,
+      transition: { duration: 0.2, ease: "easeOut" }
+    },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      scale: 1,
+      transition: { duration: 0.3, ease: "easeOut" }
+    },
+    exit: {
+      opacity: 0,
+      y: 20,
+      scale: 0.95,
+      transition: { duration: 0.2, ease: "easeIn" }
+    }
   };
 
   return (
     <motion.div
-      onMouseOver={() => onShowDescription && onShowDescription(true, id)}
-      onMouseEnter={() => onShowDescription && onShowDescription(true, id)}
-      onMouseLeave={() => onShowDescription && onShowDescription(false, id)}
-      onMouseOut={() => onShowDescription && onShowDescription(false, id)}
       className={`${styles.card}`}
-      exit={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      initial={{ opacity: 0 }}
-      transition={{ duration: 0.2, type: "tween", damping: 1, stiffness: 0 }}
-      layout
+      variants={cardVariants}
+      initial="rest"
+      whileHover="hover"
+      animate="rest"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      transition={{ duration: 0.3, ease: "easeOut" }}
     >
       <div className={`${styles["card-header"]}`}>
-        <Image src={img} alt="" height={200} width={300} />
+        <Image 
+          src={img} 
+          alt={`Preview of project`} 
+          height={200} 
+          width={300}
+          className={styles["card-image"]}
+        />
       </div>
-      <AnimatePresence>
-        {showDescription && (
+      
+      <AnimatePresence mode="wait">
+        {isHovered && (
           <motion.div
-            className={`${styles.description}  text-white`}
+            className={`${styles.description} text-white`}
             variants={descriptionVariants}
             initial="hidden"
-            animate={showDescription ? "visible" : "hidden"}
-            exit={descriptionExit}
-            transition={{
-              duration: 0.5,
-              ease: "easeInOut",
-              type: "just",
-              damping: 10,
-              stiffness: 10,
-            }}
+            animate="visible"
+            exit="exit"
           >
             <div className={`${styles["description-header"]}`}>
               {description}
             </div>
             <hr className="mb-3" />
-            <div className=" d-flex align-items-center justify-content-between">
+            <div className="d-flex align-items-center justify-content-between">
               <a
                 className={`${styles.link} color-primary fw-bold`}
                 target="_blank"
-                rel="external"
+                rel="noopener noreferrer"
                 href={liveURL}
+                onClick={(e) => e.stopPropagation()}
               >
                 Live <FaLink />
               </a>
               <a
                 className={`${styles.link} color-primary fw-bold`}
                 target="_blank"
-                rel="external"
+                rel="noopener noreferrer"
                 href={githubURL}
+                onClick={(e) => e.stopPropagation()}
               >
                 Github <FaLink />
               </a>
@@ -105,12 +127,12 @@ const ProjectCard = (props: ProjectCardInterface) => {
             <hr className="mt-3" />
 
             <div
-              className={`${styles.skills} d-flex align-items-center gap-2 flex-wrap `}
+              className={`${styles.skills} d-flex align-items-center gap-2 flex-wrap`}
             >
               {technologies?.map((item, i) => (
                 <Badge
-                  key={i}
-                  className={`${styles.technology} bg-light rounded px-2 color-primary text-center py-2 `}
+                  key={`${id}-${item}-${i}`}
+                  className={`${styles.technology} bg-light rounded px-2 color-primary text-center py-1`}
                 >
                   {item}
                 </Badge>
