@@ -1,5 +1,6 @@
 import React from "react";
 import Hero from "@/components/Home/Hero";
+import Experience from "@/components/Home/Experience";
 import Projects from "@/components/Home/Projects";
 import Testimonials from "@/components/Home/Testimonials";
 import Contact from "@/components/Home/Contact";
@@ -13,6 +14,7 @@ export default function Home() {
       <Navbar />
       <main className={styles.main}>
         <Hero />
+        <Experience />
         <Projects />
         <Testimonials />
         <Contact />

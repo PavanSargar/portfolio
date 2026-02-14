@@ -54,7 +54,9 @@
 @media screen and (max-width: 992px) {
   .container {
     height: auto;
+    overflow: visible;
     margin: 12% 4rem;
+    padding-top: 5rem;
   }
   .img-container {
     justify-content: flex-end !important;
@@ -67,11 +69,15 @@
 
 @media screen and (max-width: 768px) {
   .container {
-    margin: 6rem 4rem !important;
+    margin: 0 4rem 4rem !important;
+    padding-top: 6rem;
+    min-height: auto;
+    align-items: flex-start;
   }
   .row {
     flex-direction: column-reverse;
     gap: 4rem;
+    align-items: center;
   }
   .img-container {
     justify-content: center !important;
@@ -79,6 +85,9 @@
 }
 
 @media screen and (max-width: 576px) {
+  .container {
+    padding-top: 5.5rem;
+  }
   .description,
   .button {
     font-size: 1rem;
@@ -89,11 +98,14 @@
 
 @media screen and (max-width: 450px) {
   .container {
-    margin: 4rem 2rem 6rem !important;
-    height: 75dvh;
+    margin: 0 2rem 4rem !important;
+    padding-top: 5.5rem;
+    height: auto;
+    min-height: 0;
+    overflow: visible;
   }
   .img-container img {
-    height: 100%;
+    height: auto;
     width: 100%;
     max-width: 225px;
   }
