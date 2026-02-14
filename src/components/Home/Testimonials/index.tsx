@@ -1,71 +1,97 @@
-import React from "react";
+"use client";
+
+import React, { useRef } from "react";
 import { poppins } from "@/assets/fonts";
 import Image from "next/image";
+import { motion, useInView } from "framer-motion";
+import Button from "@/components/Button";
 import styles from "./index.module.css";
 import { testimonials } from "./testimonialDetails";
-import Button from "@/components/Button";
 
-type Props = {};
+const list = Object.values(testimonials);
 
-const Testimonials = (props: Props) => {
-  return (
-    <div id="testimonials" className={`${styles.container} section-margin`}>
-      <div
-        className={`${poppins.className} ${styles.header}  d-flex align-items-center justify-content-between`}
-      >
-        <h3 className={` h-3 fw-medium color-light me-4`}>
-          Here's what my clients has to say...
-        </h3>
-        <div className={`bg-color-primary w-100 ${styles.hr} mb-1`}></div>
-      </div>
-
-      <div className="d-flex align-items-start justify-content-center mb-5">
-        <TestimonialCard
-          key={testimonials[3].name}
-          name={testimonials[3].name}
-          img={testimonials[3].img}
-          description={testimonials[3].description}
-          url={testimonials[3].url}
-        />
-      </div>
-
-      <div
-        className={`${styles.testimonials} d-flex align-items-start justify-content-center gap-5 flex-wrap`}
-      >
-        {Object.values(testimonials)
-          .slice(0, 2)
-          .map((item) => (
-            <TestimonialCard
-              key={item.name}
-              name={item.name}
-              img={item.img}
-              description={item.description}
-              url={item.url}
-            />
-          ))}
-      </div>
-      <div className="d-flex align-items-start justify-content-center mb-5 mt-5">
-        <TestimonialCard
-          key={testimonials[4].name}
-          name={testimonials[4].name}
-          img={testimonials[4].img}
-          description={testimonials[4].description}
-          url={testimonials[4].url}
-        />
-      </div>
-
-      <div className="d-flex align-items-center justify-content-center">
-        <a target="_blank" href="https://www.fiverr.com/pavansargar">
-          <Button className="fs-6" size="md" variant="dark">
-            Checkout more reviews
-          </Button>
-        </a>
-      </div>
-    </div>
-  );
+const cardVariants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.4, delay: i * 0.08, ease: [0.25, 0.46, 0.45, 0.94] },
+  }),
 };
 
-export default Testimonials;
+const headerVariants = {
+  hidden: { opacity: 0, x: -16 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] },
+  },
+};
+
+export default function Testimonials() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-80px" });
+
+  return (
+    <section
+      id="testimonials"
+      ref={sectionRef}
+      className={`${styles.section} section-margin`}
+    >
+      <motion.header
+        className={`${poppins.className} ${styles.header}`}
+        variants={headerVariants}
+        initial="hidden"
+        animate={isInView ? "visible" : "hidden"}
+      >
+        <h3 className="h-3 fw-medium color-light">Here&apos;s what my clients have to say</h3>
+        <div className={`bg-color-primary ${styles.hr}`} />
+      </motion.header>
+
+      <div className={styles.scrollWrap}>
+        <motion.div
+          className={styles.track}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          variants={{
+            visible: {
+              transition: { staggerChildren: 0.08, delayChildren: 0.12 },
+            },
+          }}
+        >
+          {list.map((item, i) => (
+            <motion.div
+              key={item.name}
+              className={styles.cardWrap}
+              variants={cardVariants}
+              custom={i}
+            >
+              <TestimonialCard
+                name={item.name}
+                img={item.img}
+                description={item.description}
+                url={item.url}
+              />
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+
+      <motion.div
+        className={styles.cta}
+        initial={{ opacity: 0 }}
+        animate={isInView ? { opacity: 1 } : {}}
+        transition={{ delay: 0.5, duration: 0.3 }}
+      >
+        <a target="_blank" rel="noreferrer" href="https://www.fiverr.com/pavansargar">
+          <Button className="fs-6" size="md" variant="dark">
+            More reviews
+          </Button>
+        </a>
+      </motion.div>
+    </section>
+  );
+}
 
 interface TestimonialCardProps {
   name: string;
@@ -74,32 +100,23 @@ interface TestimonialCardProps {
   url: string;
 }
 
-const TestimonialCard = (props: TestimonialCardProps) => {
-  const { name, img, description, url } = props;
+function TestimonialCard({ name, img, description, url }: TestimonialCardProps) {
   return (
-    <div className={`${styles.card} position-relative`}>
-      <div
-        className={`${styles["img-container"]} d-flex align-items-center justify-content-center`}
+    <article className={styles.card}>
+      <div className={styles.avatar}>
+        <Image src={img} alt={name} width={48} height={48} className={styles.avatarImg} />
+      </div>
+      <span className={styles.name}>{name}</span>
+      <blockquote className={styles.quote}>{description}</blockquote>
+      <a
+        className={styles.link}
+        href={url}
+        target="_blank"
+        rel="noreferrer"
+        onClick={(e) => e.stopPropagation()}
       >
-        <Image
-          className="rounded-circle"
-          height={80}
-          width={80}
-          src={img}
-          alt={name}
-        />
-      </div>
-      <p>
-        <q>{description}</q>
-      </p>
-      <h5>{name}</h5>
-      <div className="d-flex justify-content-center">
-        <a className="text-center color-dim " href={url} target="__blank">
-          View Profile
-        </a>
-      </div>
-
-      {/* <p></p> */}
-    </div>
+        View profile
+      </a>
+    </article>
   );
-};
+}
