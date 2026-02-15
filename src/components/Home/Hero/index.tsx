@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { Row, Col } from "react-bootstrap";
 import { FaGithub, FaLinkedinIn, FaXTwitter } from "react-icons/fa6";
+import { SiUpwork } from "react-icons/si";
 import { poppins } from "@/assets/fonts";
 import styles from "./index.module.css";
 
@@ -19,9 +20,9 @@ const Hero = (props: Props) => {
       y: 0,
       transition: {
         duration: 0.6,
-        ease: "easeOut"
-      }
-    }
+        ease: "easeOut",
+      },
+    },
   };
 
   const headingVariants = {
@@ -32,9 +33,9 @@ const Hero = (props: Props) => {
       transition: {
         duration: 0.8,
         ease: "easeOut",
-        delay: 0.2
-      }
-    }
+        delay: 0.2,
+      },
+    },
   };
 
   const descriptionVariants = {
@@ -45,9 +46,9 @@ const Hero = (props: Props) => {
       transition: {
         duration: 0.7,
         ease: "easeOut",
-        delay: 0.4
-      }
-    }
+        delay: 0.4,
+      },
+    },
   };
 
   const socialVariants = {
@@ -59,38 +60,26 @@ const Hero = (props: Props) => {
         duration: 0.6,
         ease: "easeOut",
         delay: 0.6,
-        staggerChildren: 0.1,
-        delayChildren: 0.7
-      }
-    }
+      },
+    },
   };
 
   const socialIconVariants = {
-    hidden: { opacity: 0, scale: 0.8, y: 10 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      y: 0,
-      transition: {
-        duration: 0.4,
-        ease: "easeOut"
-      }
-    },
     hover: {
       scale: 1.1,
-      y: -2,
+      y: -5,
       transition: {
         duration: 0.2,
-        ease: "easeOut"
-      }
-    }
+        ease: "easeOut",
+      },
+    },
   };
 
   const imageVariants = {
-    hidden: { 
-      opacity: 0, 
+    hidden: {
+      opacity: 0,
       scale: 0.8,
-      x: 60
+      x: 60,
     },
     visible: {
       opacity: 1,
@@ -99,20 +88,20 @@ const Hero = (props: Props) => {
       transition: {
         duration: 0.8,
         ease: "easeOut",
-        delay: 0.3
-      }
-    }
+        delay: 0.3,
+      },
+    },
   };
 
   const imageHoverVariants = {
-    rest: { 
+    rest: {
       scale: 1,
-      transition: { duration: 0.3, ease: "easeOut" }
+      transition: { duration: 0.3, ease: "easeOut" },
     },
-    hover: { 
+    hover: {
       scale: 1.05,
-      transition: { duration: 0.3, ease: "easeOut" }
-    }
+      transition: { duration: 0.3, ease: "easeOut" },
+    },
   };
 
   return (
@@ -130,7 +119,7 @@ const Hero = (props: Props) => {
             className={`${styles.header} d-flex align-items-center justify-content-start w-100`}
           >
             <div>
-              <motion.h2 
+              <motion.h2
                 variants={headingVariants}
                 className={`${poppins.className} color-light h-1`}
               >
@@ -145,14 +134,14 @@ const Hero = (props: Props) => {
                 As a web developer, I create user-centric digital products and
                 interactive experiences to help businesses achieve their goals.
               </motion.p>
-              <motion.div 
+              <motion.div
                 variants={socialVariants}
                 className={`${styles["button-container"]} d-flex gap-4`}
               >
-                <motion.a 
+                <motion.a
                   variants={socialIconVariants}
                   whileHover="hover"
-                  target="_blank" 
+                  target="_blank"
                   href="https://www.github.com/pavansargar"
                   rel="noopener noreferrer"
                 >
@@ -167,14 +156,23 @@ const Hero = (props: Props) => {
                 >
                   <FaLinkedinIn size={32} color="#be45e0" />
                 </motion.a>
-                <motion.a 
+                <motion.a
                   variants={socialIconVariants}
                   whileHover="hover"
-                  target="_blank" 
+                  target="_blank"
                   href="https://www.twitter.com/pavan_sargar"
                   rel="noopener noreferrer"
                 >
                   <FaXTwitter size={32} color="#be45e0" />
+                </motion.a>
+                <motion.a
+                  variants={socialIconVariants}
+                  whileHover="hover"
+                  target="_blank"
+                  href="https://www.upwork.com/freelancers/~0135477dd9a723c6f2?mp_source=share"
+                  rel="noopener noreferrer"
+                >
+                  <SiUpwork size={32} color="#be45e0" />
                 </motion.a>
               </motion.div>
             </div>

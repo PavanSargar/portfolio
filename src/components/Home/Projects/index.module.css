@@ -16,12 +16,13 @@
 
 .button {
   border-radius: 24px;
-  background: rgba(57, 62, 70, 0.5);
+  background: rgba(57, 62, 70, 0.5) !important;
   backdrop-filter: blur(4px);
+  border: none !important;
 }
 
 .button.active {
-  background-color: var(--color-primary);
+  background-color: var(--color-primary) !important;
 }
 
 .projects {

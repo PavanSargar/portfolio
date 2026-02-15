@@ -15,7 +15,11 @@ const cardVariants = {
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.4, delay: i * 0.08, ease: [0.25, 0.46, 0.45, 0.94] },
+    transition: {
+      duration: 0.4,
+      delay: i * 0.08,
+      ease: [0.25, 0.46, 0.45, 0.94],
+    },
   }),
 };
 
@@ -44,7 +48,9 @@ export default function Testimonials() {
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
       >
-        <h3 className="h-3 fw-medium color-light">Here&apos;s what my clients have to say</h3>
+        <h3 className="h-3 fw-medium color-light">
+          Here&apos;s what my clients have to say
+        </h3>
         <div className={`bg-color-primary ${styles.hr}`} />
       </motion.header>
 
@@ -83,7 +89,11 @@ export default function Testimonials() {
         animate={isInView ? { opacity: 1 } : {}}
         transition={{ delay: 0.5, duration: 0.3 }}
       >
-        <a target="_blank" rel="noreferrer" href="https://www.fiverr.com/pavansargar">
+        <a
+          target="_blank"
+          rel="noreferrer"
+          href="https://www.fiverr.com/pavansargar"
+        >
           <Button className="fs-6" size="md" variant="dark">
             More reviews
           </Button>
@@ -100,11 +110,35 @@ interface TestimonialCardProps {
   url: string;
 }
 
-function TestimonialCard({ name, img, description, url }: TestimonialCardProps) {
+function TestimonialCard({
+  name,
+  img,
+  description,
+  url,
+}: TestimonialCardProps) {
+  const initials = name
+    .split(" ")
+    .map((w) => w[0])
+    .join("")
+    .slice(0, 2)
+    .toUpperCase();
+
   return (
     <article className={styles.card}>
       <div className={styles.avatar}>
-        <Image src={img} alt={name} width={48} height={48} className={styles.avatarImg} />
+        {img ? (
+          <Image
+            src={img}
+            alt={name}
+            width={48}
+            height={48}
+            className={styles.avatarImg}
+          />
+        ) : (
+          <div className={styles.avatarPlaceholder}>
+            <span className={styles.initials}>{initials}</span>
+          </div>
+        )}
       </div>
       <span className={styles.name}>{name}</span>
       <blockquote className={styles.quote}>{description}</blockquote>

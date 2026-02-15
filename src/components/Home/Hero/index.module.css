@@ -42,14 +42,13 @@
 }
 
 .button-container a:hover {
-  background: rgba(190, 69, 224, 0.1);
-  backdrop-filter: blur(4px);
+  background: transparent;
+  backdrop-filter: none;
 }
 
 .header h2 {
   will-change: transform, opacity;
 }
-
 
 @media screen and (max-width: 992px) {
   .container {
