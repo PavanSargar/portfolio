@@ -1,8 +1,11 @@
-import { Fira_Code, Montserrat, Poppins } from "next/font/google";
-
-export const montserrat = Montserrat({ subsets: ["latin"] });
-export const firaCode = Fira_Code({ subsets: ["latin"] });
-export const poppins = Poppins({
-  weight: ["400", "500", "700"],
+import { Bricolage_Grotesque, DM_Sans } from "next/font/google";
+export const display = Bricolage_Grotesque({
   subsets: ["latin"],
+  variable: "--font-display",
+  display: "swap",
+});
+export const body = DM_Sans({
+  subsets: ["latin"],
+  variable: "--font-body",
+  display: "swap",
 });
