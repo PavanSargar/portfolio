@@ -34,19 +34,28 @@ WebP. Embedded metadata is omitted. The source stays in color; the existing
 portrait CSS applies `grayscale(1)`. The 4:5 frame uses a 62% horizontal crop
 position to keep Pawan centered. No stock attribution applies to this photo.
 
-## Temporary photography
+## About photo stack
 
-The About image uses the [Unsplash License](https://unsplash.com/license).
-It is a placeholder. Its caption, alternative text, and credit identify this
-explicitly. It was downloaded on November 8, 2026.
+The three travel photos were supplied by Pawan on November 8, 2026, and the
+personal desk photo on November 9, 2026. The stack order is Desk, Mountains,
+Snow, then Paragliding, with the desk photograph first. All stack
+images use lazy loading and responsive Next Image sources.
 
-| File | Photographer and original | Source image ID |
-| --- | --- | --- |
-| `public/images/workspace-placeholder.jpg` | [Domenico Loia](https://unsplash.com/photos/hGV2TfOh0ns) — desk with MacBook and iMac | `photo-1499951360447-b19be8fe80f5` |
+- `public/images/pawan-paragliding.webp`: 4176×2784 JPEG compressed to
+  1200×800 WebP (123,276 bytes). The display rotates it 90° clockwise and
+  positions the crop at `28% 50%`; the stored pixels keep their original
+  orientation.
+- `public/images/pawan-mountain-air.webp`: 6048×4032 JPEG compressed to
+  1200×800 WebP (91,078 bytes), with a centered crop.
+- `public/images/pawan-mountains.webp`: reuses the existing compressed
+  photograph (124,396 bytes). The third attachment matches the original
+  mountain photograph byte-for-byte. The About stack uses a centered crop.
+- `public/images/pawan-desk.webp`: 4590×8160 JPEG compressed to 1000×1778
+  WebP. The 3:2 display uses `50% 30%` positioning to frame the laptop screen
+  and coffee while keeping the complete portrait source available.
 
-Original image host: `images.unsplash.com`. Download size is 1200px.
-Replacement sources, alt text, crop positions, and captions live in
-`src/content/portfolio.ts`.
+Embedded metadata is omitted from the WebP assets. These personal photos
+retain their original colors and have no stock attribution.
 
 ## Public project screenshots
 

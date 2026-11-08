@@ -42,16 +42,19 @@ export default function Navigation() {
           aria-label="Main navigation"
           className={open ? "navigation is-open" : "navigation"}
         >
-          {links.map(([label, href]) => (
-            <Link
-              key={label}
-              href={href}
-              onClick={() => setOpen(false)}
-              className={label === "Contact" ? "nav-contact" : ""}
-            >
-              {label}
-            </Link>
-          ))}
+          {links.map(([label, href]) => {
+            const NavLink = href.startsWith("/#") ? "a" : Link;
+            return (
+              <NavLink
+                key={label}
+                href={href}
+                onClick={() => setOpen(false)}
+                className={label === "Contact" ? "nav-contact" : ""}
+              >
+                {label}
+              </NavLink>
+            );
+          })}
         </nav>
       </div>
     </header>

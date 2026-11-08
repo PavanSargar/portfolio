@@ -6,6 +6,7 @@ export const display = Bricolage_Grotesque({
 });
 export const body = DM_Sans({
   subsets: ["latin"],
+  style: ["normal", "italic"],
   variable: "--font-body",
   display: "swap",
 });
