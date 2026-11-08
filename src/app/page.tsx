@@ -1,8 +1,9 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { profile, photos, selectedProjects, experience, earlierWork, testimonials } from "@/content/portfolio";
+import { profile, photos, aboutPhotos, selectedProjects, experience, earlierWork, testimonials } from "@/content/portfolio";
 import { getAllPosts, formatDate } from "@/lib/blog";
 import Photo from "@/components/Photo";
+import PhotoStack from "@/components/PhotoStack";
 import ProjectCard from "@/components/ProjectCard";
 import Contact from "@/components/Contact";
 
@@ -33,10 +34,10 @@ export default function Home() {
             <p className="hero-aside">A little code, a lot of curiosity.<br />Based in {profile.location}.</p>
             <a href="#work" className="text-link">A few things I’ve built <span aria-hidden="true">↓</span></a>
           </div>
-          <div className="hero-portrait"><Photo photo={photos.portrait} portrait /></div>
+          <div className="hero-portrait"><Photo photo={photos.portrait} /></div>
           <aside className="hero-now">
             <div className="journal-stamp" aria-label="Always learning, always building">Always<br />learning.<br />Always building.</div>
-            <div className="now-note"><p>These days</p><p><strong>{profile.role}</strong><br />{profile.company}<br /><span>({profile.affiliation})</span></p></div>
+            <div className="now-note"><p>These days</p><p><strong>{profile.role}</strong><br />at {profile.company}<br /><span>({profile.affiliation})</span></p></div>
           </aside>
         </div>
       </section>
@@ -65,7 +66,7 @@ export default function Home() {
           <p>My work has taken me from web interfaces to video editing, desktop apps, and AI integration. These days, I lead full-stack development at Cassandra Risk, across frontend, backend, UI/UX, AI, and GCP deployments.</p>
           <div className="about-links"><a className="text-link" href={profile.links.github}>Find me on GitHub</a><Link className="text-link" href="/blog">Read my notebook</Link></div>
         </div>
-        <div className="about-photo"><Photo photo={photos.about} /><p className="photo-note">Room for a little of life outside the screen.</p></div>
+        <PhotoStack photos={aboutPhotos} />
       </section>
 
       <section id="experience" className="shell experience-section section-space">
@@ -93,7 +94,7 @@ export default function Home() {
                 <a href={item.url}>{item.name}</a>
                 <span>Client on Fiverr</span>
               </figcaption>
-              <blockquote>{item.quote}</blockquote>
+              <blockquote>&quot;{item.quote}&quot;</blockquote>
             </figure>
           ))}
         </div>

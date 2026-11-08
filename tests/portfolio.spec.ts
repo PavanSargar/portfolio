@@ -85,7 +85,7 @@ for (const width of [320, 390, 768, 1280]) {
         ),
       ).toBe(true);
       if (path === "/") {
-        await expect(page.getByAltText(/Pawan Sargar standing/)).toBeVisible();
+        await expect(page.locator(".hero-portrait").getByAltText(/Pawan Sargar standing/)).toBeVisible();
         await expect
           .poll(() =>
             page.locator("img").evaluateAll((images) =>
@@ -249,3 +249,61 @@ test("WCAG accessibility on the main page types", async ({ page }) => {
     }
   }
 });
+
+test("photo stack selects, cycles and respects reduced motion", async ({ page }) => {
+  await page.goto("/#about");
+  const stack = page.getByRole("figure", { name: "A few snapshots from my life" });
+  const choices = stack.getByRole("group", { name: "Choose a photo" });
+  await expect(choices.getByRole("button")).toHaveText(["Desk", "Mountains", "Snow", "Paragliding"]);
+  await expect(stack.getByRole("img")).toHaveCount(4);
+  await expect(choices.getByRole("button", { name: "Desk", exact: true })).toHaveAttribute("aria-pressed", "true");
+  for (const image of await stack.getByRole("img").all()) {
+    await expect(image).toHaveAttribute("loading", "lazy");
+  }
+  for (const label of ["Mountains", "Snow", "Paragliding", "Desk"]) {
+    const choice = choices.getByRole("button", { name: label, exact: true });
+    await choice.focus();
+    await choice.press("Enter");
+    await expect(choice).toHaveAttribute("aria-pressed", "true");
+    const front = stack.locator('.photo-card[data-rank="0"]');
+    await expect(front).toHaveCount(1);
+    await expect.poll(() => front.locator("img").evaluate((image) => (image as HTMLImageElement).complete && (image as HTMLImageElement).naturalWidth > 0)).toBe(true);
+  }
+  await stack.getByRole("button", { name: "Show next photo", exact: true }).click();
+  await expect(choices.getByRole("button", { name: "Mountains", exact: true })).toHaveAttribute("aria-pressed", "true");
+  expect(await stack.locator(".is-clockwise").evaluate((image) => getComputedStyle(image).transform)).toBe("matrix(0, 1, -1, 0, 0, 0)");
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await choices.getByRole("button", { name: "Paragliding", exact: true }).click();
+  expect(await stack.locator('.photo-card[data-rank="0"]').evaluate((card) => getComputedStyle(card).animationName)).toBe("none");
+  expect((await new AxeBuilder({ page }).include(".photo-stack").withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze()).violations).toEqual([]);
+});
+
+for (const width of [390, 1280]) {
+  test(`section navigation scrolls smoothly at ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 900 });
+    await page.emulateMedia({ reducedMotion: "no-preference" });
+    for (const [label, id] of [["Work", "work"], ["Experience", "experience"], ["About", "about"], ["Contact", "contact"]]) {
+      await page.goto("/");
+      if (width < 760) await page.getByRole("button", { name: "Menu", exact: false }).click();
+      await page.evaluate(() => {
+        const positions: number[] = [];
+        Object.assign(window, { scrollSamples: positions });
+        window.addEventListener("scroll", () => positions.push(scrollY), { passive: true });
+      });
+      await page.getByRole("navigation", { name: "Main navigation" }).getByRole("link", { name: label, exact: true }).click();
+      await expect(page).toHaveURL(new RegExp(`#${id}$`));
+      await expect.poll(() => page.locator(`#${id}`).evaluate((section) => {
+        const root = document.documentElement;
+        const destination = Math.min(section.getBoundingClientRect().top + scrollY - parseFloat(getComputedStyle(root).scrollPaddingTop), root.scrollHeight - innerHeight);
+        return Math.abs(scrollY - destination);
+      })).toBeLessThan(2);
+      const intermediateScroll = await page.evaluate(() => (window as Window & { scrollSamples?: number[] }).scrollSamples?.some((position) => position > 1 && position < scrollY - 1));
+      expect(intermediateScroll).toBe(true);
+    }
+    await page.goto("/blog");
+    if (width < 760) await page.getByRole("button", { name: "Menu", exact: false }).click();
+    await page.getByRole("navigation", { name: "Main navigation" }).getByRole("link", { name: "About", exact: true }).click();
+    await expect(page).toHaveURL(/\/#about$/);
+    await expect(page.getByRole("heading", { name: "There’s always something to figure out." })).toBeInViewport();
+  });
+}

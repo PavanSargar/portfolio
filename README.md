@@ -2,7 +2,8 @@
 
 A personal journal portfolio built with Next.js 15.5 App Router, React 19.1,
 Tailwind CSS v4, and TypeScript. Content and Markdown highlighting render on the
-server; navigation and the EmailJS contact form are the only client components.
+server; navigation, the personal photo stack, and the EmailJS contact form are
+the client components.
 The visual system uses blush paper, plum text, Bricolage Grotesque headings,
 and DM Sans body copy. Projects are collapsed by default; native HTML details
 reveal public screenshots and contributions without requiring JavaScript.
@@ -41,11 +42,15 @@ not a daily-active count or a claim of growth attributable to one person.
 The Cassandra Risk / Radiansys date overlap is intentional.
 
 To replace photos, add your files under `public/images`, then update
-`photos.portrait` (4:5) and `photos.about` (3:2). Set accurate `alt`, `position`,
-optional `credit` and `creditUrl`, and set `placeholder: false` for personal photos.
+`photos.portrait` (4:5) and `aboutPhotos` (3:2). Set accurate `alt` and `position`.
 The hero uses Pawan’s supplied photograph with a CSS grayscale filter.
-Change the filename when
-replacing an image so caches refresh. See [ASSETS.md](ASSETS.md) for attribution.
+`aboutPhotos` contains four personal photographs: Desk, Mountains, Snow,
+and Paragliding, in that order, with the desk photograph first.
+Choose a photo or click the front card to cycle; the lift animation respects
+reduced motion. Images load lazily through Next Image. The paragliding photo
+is rotated clockwise when displayed, preserving the compressed source.
+Change the filename when replacing an image so caches refresh.
+See [ASSETS.md](ASSETS.md) for attribution.
 
 ## Validation
 
@@ -71,8 +76,8 @@ overrides; revisit them when updating Next or ESLint.
 
 ## Release on the existing Netlify site
 
-Development is on `codex/portfolio-v4-preview`. Production promotion is deferred
-to the owner after local review; no hosting settings have been changed.
+Changes are reviewed in pull requests targeting `v4`. Production promotion
+is handled by the owner after review.
 
 The canonical domain is https://pavansargar.com. `www` redirects there.
 `netlify.toml` defines the build command, output directory, and Node version.

@@ -23,22 +23,17 @@ export interface Photo {
   position: string;
   zoom?: number;
   zoomOrigin?: string;
-  credit?: string;
-  creditUrl?: string;
-  placeholder: boolean;
 }
 export const portraitOptions = {
   mountains: {
     src: "/images/pawan-mountains.webp",
     alt: "Pawan Sargar standing in front of snow-covered mountains",
     position: "62% 50%",
-    placeholder: false,
   },
   forest: {
     src: "/images/pawan-forest.webp",
     alt: "Pawan Sargar standing in front of a wooded hillside",
     position: "50% 72%",
-    placeholder: false,
   },
   solid: {
     src: "/images/pawan-solid.webp",
@@ -46,20 +41,46 @@ export const portraitOptions = {
     position: "50% 74%",
     zoom: 1.3,
     zoomOrigin: "65% 50%",
-    placeholder: false,
   },
 } satisfies Record<string, Photo>;
-export const photos: Record<"portrait" | "about", Photo> = {
+export const photos = {
   portrait: portraitOptions.solid,
-  about: {
-    src: "/images/workspace-placeholder.jpg",
-    alt: "A bright workspace with a computer, notebook and plants",
-    position: "50% 50%",
-    credit: "Domenico Loia / Unsplash",
-    creditUrl: "https://unsplash.com/photos/hGV2TfOh0ns",
-    placeholder: true,
-  },
 };
+export interface AboutPhoto extends Photo {
+  label: string;
+  caption: string;
+  clockwise?: boolean;
+}
+export const aboutPhotos: AboutPhoto[] = [
+  {
+    src: "/images/pawan-desk.webp",
+    alt: "Pawan’s laptop showing code beside a coffee on a wooden table",
+    position: "50% 30%",
+    label: "Desk",
+    caption: "A little code, a little coffee.",
+  },
+  {
+    src: "/images/pawan-mountain-air.webp",
+    alt: "Pawan with his arms outstretched in front of snow-covered mountains",
+    position: "50% 50%",
+    label: "Mountains",
+    caption: "A little mountain air.",
+  },
+  {
+    ...portraitOptions.mountains,
+    position: "50% 50%",
+    label: "Snow",
+    caption: "Somewhere away from the screen.",
+  },
+  {
+    src: "/images/pawan-paragliding.webp",
+    alt: "Pawan wearing a helmet and paragliding harness",
+    position: "28% 50%",
+    label: "Paragliding",
+    caption: "Ready for a different kind of adventure.",
+    clockwise: true,
+  },
+];
 export const cassandra = {
   name: "Cassandra Risk",
   url: "https://cassandrarisk.com",

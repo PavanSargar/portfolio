@@ -30,7 +30,7 @@ export default function OpenGraphImage() {
           {profile.headline}
         </div>
         <div style={{ display: "flex", color: "#64304F", fontSize: 27 }}>
-          {profile.role} · {profile.company} ({profile.affiliation})
+          {profile.role} at {profile.company} ({profile.affiliation})
         </div>
       </div>
     ),
