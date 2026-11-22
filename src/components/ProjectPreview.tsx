@@ -17,11 +17,7 @@ export default function ProjectPreview({
             alt={preview.alt}
             width={preview.width}
             height={preview.height}
-            sizes={
-              large
-                ? "(max-width: 760px) 100vw, 1100px"
-                : "(max-width: 760px) 100vw, 60vw"
-            }
+            sizes="(max-width: 1144px) 100vw, 1080px"
           />
         </div>
       </a>

@@ -83,12 +83,13 @@
 .section-heading h2 { font-size: clamp(30px, 3vw, 38px); }
 .section-heading > p { color: var(--color-muted); font-size: 14px; }
 .work-section { position: relative; padding-top: 30px; }
-.project-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; align-items: start; }
-.project-card { padding: 27px 30px 23px; background: var(--color-sheet); border-radius: var(--radius-paper); min-width: 0; }
-.project-cassandra, .project-card:has(.project-details[open]) { grid-column: 1/-1; }
+.project-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.project-card { display: flex; flex-direction: column; padding: 27px 30px 23px; background: var(--color-sheet); border-radius: var(--radius-paper); min-width: 0; }
+.project-card:has(.project-details[open]) { grid-column: 1/-1; }
 .project-context { color: var(--color-muted); font-size: 12px; margin-bottom: 10px; }
 .project-card h3 { font-size: 31px; margin-bottom: 12px; }
 .project-description { color: var(--color-muted); max-width: 78ch; font-size: 15px; line-height: 1.65; }
+.project-details { margin-top: auto; }
 .project-details > summary { display: flex; align-items: center; gap: 12px; width: fit-content; padding-block: 10px; margin-top: 8px; font-size: 14px; }
 .when-closed, .when-open { text-decoration: underline; text-underline-offset: 4px; }
 .disclosure-symbol { font-size: 20px; line-height: 1; text-decoration: none; transition: transform .18s ease; }

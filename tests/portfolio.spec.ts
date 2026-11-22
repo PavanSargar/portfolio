@@ -11,6 +11,9 @@ test("primary journeys and accessible content", async ({ page }) => {
   await expect(
     page.getByRole("heading", { name: "Cassandra Risk", exact: true }),
   ).toBeVisible();
+  await expect(page.locator("#about").getByRole("link", { name: "Waystoweb Technologies", exact: true })).toHaveAttribute("href", "https://waystoweb.com");
+  await expect(page.locator("#experience article").filter({ hasText: "Waystoweb Technologies" })).toContainText("Founder");
+  await expect(page.locator("#experience article").filter({ hasText: "Waystoweb Technologies" })).toContainText("Aug 2024 — Present");
   await page.getByRole("article", { name: "Cassandra Risk", exact: true }).locator("summary").click();
   await page.getByRole("link", { name: "Inside the project" }).click();
   await expect(page).toHaveURL(/\/work\/cassandra-risk$/);
@@ -49,13 +52,14 @@ test("primary journeys and accessible content", async ({ page }) => {
 });
 test("project accordions start closed and reveal the right screenshots and links", async ({ page }) => {
   await page.goto("/");
-  await expect(page.locator(".project-card h3")).toHaveText(["Cassandra Risk", "YapTxt", "VFX AI"]);
+  await expect(page.locator(".project-card h3")).toHaveText(["Cassandra Risk", "SkillWhisk", "YapTxt", "VFX AI"]);
   await expect(page.locator(".project-details[open]")).toHaveCount(0);
   await expect(page.locator(".project-grid img:visible")).toHaveCount(0);
   for (const [name, url, alt] of [
     ["Cassandra Risk", "https://cassandrarisk.com", /Cassandra Risk public website/],
     ["YapTxt", "https://yaptxt.com", /YapTxt public website/],
     ["VFX AI", "https://www.vfxai.com", /VFX AI public product page/],
+    ["SkillWhisk", "https://skillwhisk.vercel.app", /SkillWhisk public website/],
   ] as const) {
     const trigger = page.getByRole("article", { name, exact: true }).locator("summary");
     await trigger.focus();
@@ -65,7 +69,11 @@ test("project accordions start closed and reveal the right screenshots and links
     await expect(page.getByRole("link", { name: `Visit ${name}`, exact: true })).toHaveAttribute("href", url);
   }
   await expect(page.locator(".project-vfx")).toContainText("Radiansys");
-  await page.getByRole("article", { name: "VFX AI", exact: true }).locator("summary").press("Space");
+  await expect(page.locator(".project-skillwhisk .project-context")).toHaveText("Personal project");
+  await expect(page.locator(".project-skillwhisk .project-description")).toHaveText("I built SkillWhisk, a library of 110 copy-ready AI recipes that combine curated agent skills, GitHub repositories, and quality checks for websites, apps, videos, and security audits.");
+  await expect(page.getByAltText(/SkillWhisk public website/)).toHaveAttribute("loading", "lazy");
+  await expect(page.getByRole("link", { name: "Open full screenshot of skillwhisk.vercel.app" })).toHaveAttribute("href", "/images/skillwhisk-public.webp");
+  await page.getByRole("article", { name: "SkillWhisk", exact: true }).locator("summary").press("Space");
   await expect(page.locator(".project-details[open]")).toHaveCount(0);
 });
 for (const width of [320, 390, 768, 1280]) {
@@ -85,6 +93,16 @@ for (const width of [320, 390, 768, 1280]) {
         ),
       ).toBe(true);
       if (path === "/") {
+        const cassandra = await page.locator(".project-cassandra").boundingBox();
+        const skillwhisk = await page.locator(".project-skillwhisk").boundingBox();
+        expect(cassandra).not.toBeNull();
+        expect(skillwhisk).not.toBeNull();
+        if (width >= 768) {
+          expect(skillwhisk!.y).toBeCloseTo(cassandra!.y, 0);
+          expect(skillwhisk!.x).toBeGreaterThan(cassandra!.x + cassandra!.width);
+        } else {
+          expect(skillwhisk!.y).toBeGreaterThan(cassandra!.y + cassandra!.height);
+        }
         await expect(page.locator(".hero-portrait").getByAltText(/Pawan Sargar standing/)).toBeVisible();
         await expect
           .poll(() =>
@@ -114,7 +132,7 @@ for (const width of [320, 390, 768, 1280]) {
           fullPage: true,
           animations: "disabled",
         });
-        for (const name of ["Cassandra Risk", "YapTxt", "VFX AI"]) {
+        for (const name of ["Cassandra Risk", "YapTxt", "VFX AI", "SkillWhisk"]) {
           await page.getByRole("article", { name, exact: true }).locator("summary").click();
           const image = page.locator(".project-details[open] img");
           await image.scrollIntoViewIfNeeded();

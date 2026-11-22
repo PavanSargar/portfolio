@@ -1,3 +1,9 @@
+export const waystoweb = {
+  name: "Waystoweb Technologies",
+  url: "https://waystoweb.com",
+  description:
+    "I build and ship ready-to-use MVPs quickly, helping founders validate ideas with real users.",
+} as const;
 export const profile = {
   name: "Pawan Sargar",
   siteUrl: "https://pavansargar.com",
@@ -7,7 +13,7 @@ export const profile = {
   location: "India",
   headline: "Curious by nature. A developer by craft.",
   introduction:
-    "I’m Pawan Sargar, a developer and quick learner who loves turning ideas into working products. Currently Full Stack Lead at Cassandra Risk (Improbable Worlds).",
+    "I’m Pawan Sargar, Full Stack Lead at Cassandra Risk (Improbable Worlds) and Founder of Waystoweb Technologies. I turn ideas into useful products and MVPs.",
   personalIntroduction:
     "I’m a developer who loves a new problem. I learn quickly, pick up the tools a product needs, and turn ideas into things people can use.",
   links: {
@@ -151,6 +157,15 @@ export const projectPreviews = {
     caption: "VFX AI’s current public editor page, November 2026.",
     sourceUrl: "https://www.vfxai.com/product/ai-video-editor",
   },
+  skillwhisk: {
+    src: "/images/skillwhisk-public.webp",
+    width: 1280,
+    height: 720,
+    domain: "skillwhisk.vercel.app",
+    alt: "SkillWhisk public website showing its copy-ready AI recipe library and category filters",
+    caption: "SkillWhisk’s public recipe library, November 2026.",
+    sourceUrl: "https://skillwhisk.vercel.app",
+  },
 } as const;
 export type ProjectId = keyof typeof projectPreviews;
 export interface SelectedProject {
@@ -173,6 +188,15 @@ export const selectedProjects: SelectedProject[] = [
     technologies: ["Frontend & backend", "UI/UX", "Vertex AI RAG", "Google Cloud"],
     url: cassandra.url,
     caseStudy: cassandra.slug,
+  },
+  {
+    id: "skillwhisk",
+    name: "SkillWhisk",
+    context: "Personal project",
+    description: "I built SkillWhisk, a library of 110 copy-ready AI recipes that combine curated agent skills, GitHub repositories, and quality checks for websites, apps, videos, and security audits.",
+    contribution: "I built the product and brought the recipes, skills, repositories, and checks into one place. Pick a project, choose a style, and copy a prompt to use with your AI coding agent.",
+    technologies: ["AI recipes", "Agent skills", "GitHub repositories", "Quality checks"],
+    url: "https://skillwhisk.vercel.app",
   },
   {
     id: "yaptxt",
@@ -208,6 +232,13 @@ export const experience: Experience[] = [
     to: "Present",
     description:
       "Leading frontend, backend, UI/UX, AI integration, and GCP deployments for the public conflict early-warning platform.",
+  },
+  {
+    company: waystoweb.name,
+    role: "Founder",
+    from: "Aug 2024",
+    to: "Present",
+    description: waystoweb.description,
   },
   {
     company: "Radiansys Inc.",
@@ -277,11 +308,6 @@ export const earlierWork: EarlierWork[] = [
     stack: "React, TypeScript, Node.js",
   },
   {
-    name: "Waystoweb",
-    description: "A technical blog migrated from WordPress to Next.js.",
-    stack: "Next.js, Markdown",
-  },
-  {
     name: "AnaghaSoftech",
     description: "A client website and full-stack web development project.",
     stack: "React, Node.js, MongoDB",
@@ -302,12 +328,6 @@ export const earlierWork: EarlierWork[] = [
     url: "https://hhouse.netlify.app",
     description: "An exploration of interactive 3D on the web.",
     stack: "JavaScript, Three.js",
-  },
-  {
-    name: "Solve33",
-    url: "https://solve33.netlify.app",
-    description: "A client interface built with React.",
-    stack: "React, Styled Components",
   },
 ];
 export const testimonials = [

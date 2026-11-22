@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { profile, photos, aboutPhotos, selectedProjects, experience, earlierWork, testimonials } from "@/content/portfolio";
+import { profile, waystoweb, photos, aboutPhotos, selectedProjects, experience, earlierWork, testimonials } from "@/content/portfolio";
 import { getAllPosts, formatDate } from "@/lib/blog";
 import Photo from "@/components/Photo";
 import PhotoStack from "@/components/PhotoStack";
@@ -64,6 +64,7 @@ export default function Home() {
           <p>That’s the part I like. A new product, an unfamiliar technology, an idea that doesn’t quite have a shape yet.</p>
           <p>I’m a developer who learns by building. I’m comfortable picking up a new stack, asking questions, and working through the details until an idea becomes a real, useful product.</p>
           <p>My work has taken me from web interfaces to video editing, desktop apps, and AI integration. These days, I lead full-stack development at Cassandra Risk, across frontend, backend, UI/UX, AI, and GCP deployments.</p>
+          <p>I’m also the Founder of <a className="text-link" href={waystoweb.url}>{waystoweb.name}</a>. {waystoweb.description}</p>
           <div className="about-links"><a className="text-link" href={profile.links.github}>Find me on GitHub</a><Link className="text-link" href="/blog">Read my notebook</Link></div>
         </div>
         <PhotoStack photos={aboutPhotos} />
@@ -72,8 +73,8 @@ export default function Home() {
       <section id="experience" className="shell experience-section section-space">
         <div className="experience-grid">
           <div className="section-heading vertical"><h2>A little of<br />the journey.</h2><p>Different teams. New problems.<br />A lot learned along the way.</p><a className="text-link" href={profile.links.linkedin}>The longer version on LinkedIn</a></div>
-          <div>{experience.slice(0, 3).map((entry) => <ExperienceRow key={entry.company} entry={entry} />)}
-            <details className="experience-more"><summary>Earlier chapters <span aria-hidden="true">+</span></summary>{experience.slice(3).map((entry) => <ExperienceRow key={entry.company} entry={entry} />)}</details>
+          <div>{experience.slice(0, 4).map((entry) => <ExperienceRow key={entry.company} entry={entry} />)}
+            <details className="experience-more"><summary>Earlier chapters <span aria-hidden="true">+</span></summary>{experience.slice(4).map((entry) => <ExperienceRow key={entry.company} entry={entry} />)}</details>
           </div>
         </div>
       </section>
