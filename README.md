@@ -28,8 +28,10 @@ Environment files stay outside Git; never put a private EmailJS key in the app.
 
 - `src/content/portfolio.ts`: profile, experience, contributions, milestones,
   selected testimonials, earlier projects, and photo source/crop/credit settings.
-- `selectedProjects` defines Cassandra Risk, YapTxt, and VFX AI (Radiansys), in
+- `selectedProjects` defines Cassandra Risk, SkillWhisk, YapTxt, and VFX AI (Radiansys), in
   that order. `projectPreviews` defines their screenshot files, captions, and sources.
+- SkillWhisk is a personal project. `waystoweb` defines the company and MVP focus;
+  the Founder role runs from August 2024 to present.
 - `src/app/page.tsx`: homepage composition.
 - `src/app/work/cassandra-risk/page.tsx`: public Cassandra Risk case study.
 - `__posts/*.mdx`: existing articles, with their original `/blog/[slug]` URLs.

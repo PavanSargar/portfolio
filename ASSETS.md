@@ -66,6 +66,11 @@ retain their original colors and have no stock attribution.
 - `public/images/vfx-public.webp`: screenshot of
   https://www.vfxai.com/product/ai-video-editor,
   captured November 8, 2026 at 1280×720.
+- `public/images/skillwhisk-public.webp`: screenshot of
+  https://skillwhisk.vercel.app, captured November 22, 2026 at 1280×720.
+  Compressed to WebP (47,406 bytes), with metadata omitted. SkillWhisk is
+  Pawan’s personal project; its 110-recipe count is owner-provided and was
+  also visible in the public library at capture time.
 
 These are current public website previews, used to illustrate documented work.
 The underlying product names, logos, and interface artwork belong to their
